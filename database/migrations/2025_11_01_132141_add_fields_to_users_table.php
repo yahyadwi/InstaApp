@@ -9,12 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
-    }
+    public function up()
+{
+    Schema::table('users', function (Blueprint $table) {
+        $table->string('username')->unique()->after('name');
+        $table->string('avatar')->nullable()->after('email');
+        $table->text('bio')->nullable()->after('avatar');
+    });
+}
 
     /**
      * Reverse the migrations.
